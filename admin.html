@@ -107,7 +107,18 @@ function removeProduct(id){if(confirm("حذف المنتج؟")){products=product
 function setStatus(i,v){orders[i].status=v;save();render()}
 function removeOrder(i){if(confirm("حذف الطلب؟")){orders.splice(i,1);save();render()}}
 function saveSettings(){settings={whatsapp:document.getElementById("wa").value.trim(),email:document.getElementById("email").value.trim(),storeName:"ELIXR إكسير للعطور"};localStorage.setItem("elixr_settings",JSON.stringify(settings));alert("تم حفظ الإعدادات.")}
-function login(){if(document.getElementById("user").value==="admin"&&document.getElementById("pass").value==="admin123"){sessionStorage.elixr_admin="1";document.getElementById("login").classList.add("hidden")}else document.getElementById("err").textContent="بيانات الدخول غير صحيحة."}
+function login(){
+  const user=document.getElementById("user").value.trim();
+  const pass=document.getElementById("pass").value;
+
+  if(user==="admin" && pass==="admin123"){
+    sessionStorage.setItem("elixr_admin","1");
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("err").textContent="";
+  }else{
+    document.getElementById("err").textContent="بيانات الدخول غير صحيحة.";
+  }
+}
   
 function logout(){sessionStorage.removeItem("elixr_admin");location.reload()}
 if(sessionStorage.elixr_admin==="1")document.getElementById("login").classList.add("hidden");
