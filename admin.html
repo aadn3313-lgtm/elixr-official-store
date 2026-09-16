@@ -20,6 +20,7 @@ main{padding:35px 0}.title{margin-bottom:25px}.title small{color:var(--gold);fon
 @media(max-width:850px){.stats{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
 @media(max-width:560px){.stats{grid-template-columns:1fr}.form{grid-template-columns:1fr}.full{grid-column:auto}.item{grid-template-columns:55px 1fr}.item .actions{grid-column:1/-1}.thumb{width:55px;height:55px}}
 </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <header><div class="wrap top">
@@ -122,6 +123,9 @@ function login(){
   
 function logout(){sessionStorage.removeItem("elixr_admin");location.reload()}
 if(sessionStorage.elixr_admin==="1")document.getElementById("login").classList.add("hidden");
+  const SUPABASE_URL = "https://ljjpoyhfxsetebktgopu.supabase.co";
+const SUPABASE_KEY = "sb_publishable_XLp-ePD0xHY3jGrmnu7Ikg_rcue3Lcz";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 save();render();
 </script>
 </body></html>
