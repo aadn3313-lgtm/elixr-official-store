@@ -265,6 +265,27 @@ function applySettings(){
  document.getElementById("contactEmail").textContent="Email — "+email;
 }
 save();renderDashboard();renderProducts();updateCount();applySettings();
+ const SUPABASE_URL = "https://ljjpoyhfxsetebktgopu.supabase.co";
+const SUPABASE_KEY = "sb_publishable_XLp-ePD0xHY3jGrmnu7Ikg_rcue3Lcz";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+ async function loadProductsFromSupabase(){
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("*")
+    .eq("active", true);
+
+  if(error){
+    console.error("Supabase:", error);
+    return;
+  }
+
+  if(data){
+    products = data;
+    renderProducts();
+  }
+}
+
+loadProductsFromSupabase();
 </script>
 </body>
 </html>
