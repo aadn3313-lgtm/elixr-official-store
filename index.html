@@ -186,7 +186,7 @@ function sendOrder(){
  const msg=`طلب جديد من موقع ELIXR\n\nالاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${address}\n\nالمنتجات:\n${lines}\n\nالإجمالي: ${total}`;
  createOrder();
  const settings=JSON.parse(localStorage.getItem("elixr_settings")||"{}");
- const wa=(settings.whatsapp||"9640000000000").replace(/\D/g,"");
+ const wa=(settings.whatsapp||"9647744007444").replace(/\D/g,"");
  window.open("https://wa.me/"+wa+"?text="+encodeURIComponent(msg),"_blank");
  cart=[];save();updateCount();closeModal("checkoutModal");
 }
@@ -258,7 +258,7 @@ function createOrder(){
 }
 function applySettings(){
  const s=JSON.parse(localStorage.getItem("elixr_settings")||"{}");
- const wa=(s.whatsapp||s.wa||"9640000000000").replace(/\D/g,"");
+ const wa=(s.whatsapp||s.wa||"9647744007444").replace(/\D/g,"");
  const email=s.email||"hello@example.com";
  document.getElementById("contactWhatsapp").href="https://wa.me/"+wa;
  document.getElementById("contactEmail").href="mailto:"+email;
